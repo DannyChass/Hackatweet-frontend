@@ -1,0 +1,44 @@
+.tweetContainer {
+  border-bottom: 1px solid #2f3336;
+  padding: 15px;
+  color: white;
+}
+
+.header {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.name {
+  font-weight: bold;
+  opacity: 1;
+}
+
+.username {
+  color: #8b98a5;
+}
+
+.time {
+  color: #8b98a5;
+}
+
+.content {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.like, .delete {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+}
