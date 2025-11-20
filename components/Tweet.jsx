@@ -4,7 +4,7 @@ import styles from '../styles/Tweet.module.css';
 
 function Tweet({ tweet, onDelete }) {
 
-    const user = useSelector((state) => state.user.value[0]);
+    const user = useSelector((state) => state.user.value);
     const [liked, setLiked] = useState(false);
 
     const timeSince = (date) => {
