@@ -28,7 +28,7 @@ function Home() {
                     <button onClick={() => addTweet()} className={styles.buttonTweet}>Tweet</button>
                     </div>
                     <div className={styles.allTweet}>
-                        {tweets}
+                        
                     </div>
 
                 </div>
