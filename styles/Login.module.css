@@ -53,4 +53,15 @@
 .modal {
     height: 30%;
     width: 30%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.input {
+    color: black;
+    border: 1px solid black;
 }
