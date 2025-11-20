@@ -12,7 +12,7 @@ import storage from 'redux-persist/lib/storage';
 
 const reducers = combineReducers({ user });
 
-const persistConfig = { key: 'userToken', storage };
+const persistConfig = { key: 'Hackatweet', storage };
 
 const store = configureStore({
   reducer: persistReducer(persistConfig, reducers),

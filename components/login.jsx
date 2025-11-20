@@ -1,14 +1,24 @@
 import { useState } from 'react'
 import styles from '../styles/Login.module.css'
+import { useRouter } from 'next/router'
+
+import { useDispatch } from 'react-redux';
+import { userData } from '../reducers/user';
 
 
 function Login() {
+    
+
+    const dispatch = useDispatch()
+    const router = useRouter();
 
     const [isModalVisibleSignUp, setIsModalVisibleSignUp] = useState(false);
     const [isModalVisibleSignIn, setIsModalVisibleSignIn] = useState(false);
     const [firstname, setFirstname] = useState('');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [usernameSignUp, setUsernameSignUp] = useState('');
+    const [passwordSignUp, setPasswordSignUp] = useState('');
+    const [usernameSignIn, setUsernameSignIn] = useState('');
+    const [passwordSignIn, setPasswordSignIn] = useState('');
 
     const showModalSignUp = () => {
         setIsModalVisibleSignUp(true);
@@ -26,12 +36,11 @@ function Login() {
         fetch('http://localhost:3000/users/signup', {
             method : 'POST',
             headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({firstname : firstname, username: username, password: password }),
+			body: JSON.stringify({firstname : firstname, username: usernameSignUp, password: passwordSignUp }),
         })
         .then (response => response.json())
         .then (data => {
-            console.log("New User add")
-            console.log(data)
+            dispatch(userData(data.user))
         })
 
     }
@@ -40,11 +49,14 @@ function Login() {
         fetch('http://localhost:3000/users/signin', {
             method : 'POST',
             headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({username: username, password: password }),
+			body: JSON.stringify({username: usernameSignIn, password: passwordSignIn }),
         })
         .then (response => response.json())
         .then (data => {
-            console.log("User log")
+            if (data.result===true) {
+                dispatch(userData(data.user))
+                router.push('/home')
+            }
         })
 
     }
@@ -53,9 +65,9 @@ function Login() {
         <>
             <div className={styles.modal} >
                 <input onChange={(e) => setFirstname(e.target.value)} value={firstname} className={styles.input} type='text' placeholder='firstname' />
-                <input onChange={(e) => setUsername(e.target.value)} value={username} className={styles.input} type='text' placeholder='username' />
-                <input onChange={(e) => setPassword(e.target.value)} value={password} className={styles.input} type='text' placeholder='password' />
-                <button onClick={() => addUser()} className={styles.buttonSignUp}>Register</button>
+                <input onChange={(e) => setUsernameSignUp(e.target.value)} value={usernameSignUp} className={styles.input} type='text' placeholder='username' />
+                <input onChange={(e) => setPasswordSignUp(e.target.value)} value={passwordSignUp} className={styles.input} type='text' placeholder='password' />
+                <button onClick={() => addUser()} className={styles.buttonSignUp}>Sign Up</button>
             </div>
         </>
     );
@@ -63,9 +75,9 @@ function Login() {
     const modalSignIn = (
         <>
             <div className={styles.modal} >
-                <input onChange={(e) => setUsername(e.target.value)} value={username} className={styles.input} type='text' placeholder='username' />
-                <input onChange={(e) => setPassword(e.target.value)} value={password} className={styles.input} type='text' placeholder='password' />
-                <button onClick={() => logUser()} className={styles.buttonSignUp}>Register</button>
+                <input onChange={(e) => setUsernameSignIn(e.target.value)} value={usernameSignIn} className={styles.input} type='text' placeholder='username' />
+                <input onChange={(e) => setPasswordSignIn(e.target.value)} value={passwordSignIn} className={styles.input} type='text' placeholder='password' />
+               <button onClick={() => logUser()} className={styles.buttonSignUp}>Sign In</button>
             </div>
         </>
     );

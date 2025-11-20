@@ -1,18 +1,29 @@
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
+import { useSelector } from 'react-redux';
 
 function Home() {
 
+    
     const [newTweet, setNewTweet] = useState('');
-
+    
+    const [allTweet, setAllTweet] = useState([]);
+    
+    const token = useSelector((state) => state.user.value.token);
+    
     const addTweet = () => {
         fetch('http://localhost:3000/tweets/new', {
             method : 'POST',
             headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({token : token, content: newTweet}),
         })
-    }
+        .then (response => response.json())
+        .then (data => {
+            setAllTweet([...allTweet,data.tweet])
+            console.log(allTweet)
+        })
+    };
 
     return (
         <>
