@@ -1,0 +1,55 @@
+.container {
+    height: 100vh;
+    background-color: #15202B;
+    display: flex;
+}
+
+.blockLeft {
+    width: 25%;
+}
+
+.blockCenter {
+    width: 45%;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+}
+
+.blockRight {
+    width: 30%;
+}
+
+.newTweet {
+    height: 30%;
+    border: 1px solid white;
+}
+
+.input {
+    width: 90%;
+    color: white;
+    border-bottom: 1px solid white;
+}
+
+.buttonTweet {
+    cursor: pointer;
+    background-color: #1D9BF0;
+    color: white;
+    width: 180px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.allTweet {
+    height: 70%;
+    border: 1px solid white;
+}
+
+.title1 {
+    color: white;
+    font-size: 30px;
+}
+
+.title2 {
+    color: white;
+    font-size: 30px;
+}

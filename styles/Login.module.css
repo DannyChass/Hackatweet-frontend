@@ -12,12 +12,12 @@
 }
 
 .backgroundRight {
-    background-color: black;
+    background-color: #15202B;
     width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding-left: 20px;
+    padding-left: 40px;
 }
 
 .title1 {
@@ -36,7 +36,7 @@
 
 .buttonSignUp {
     cursor: pointer;
-    background-color: blue;
+    background-color: #1D9BF0;
     color: white;
     width: 180px;
     height: 40px;
@@ -45,10 +45,12 @@
 
 .buttonSignIn {
     cursor: pointer;
-    background-color: blue;
-    color: white;
-    width: 150px;
-    border-radius: 10px;
+    background-color: #15202B;
+    color: #1D9BF0;
+    width: 180px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid white;
 }
 
 .modal {
@@ -65,4 +67,12 @@
 .input {
     color: black;
     border: 1px solid black;
+}
+
+.buttonContainer {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 20%;
 }

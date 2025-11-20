@@ -78,13 +78,15 @@ function Login() {
                 </div>
                 <div className={styles.backgroundRight}>
                     <img src="./logo.png" height={100} width={100} />
-                    <h1 className={styles.title1}>See what's happening</h1>
+                    <h1 className={styles.title1}>See what's <br></br>happening</h1>
+                    <div className={styles.buttonContainer}>
                     <h4 className={styles.title2}>Join Hackatweet today.</h4>
                     <button onClick={() => showModalSignUp()} className={styles.buttonSignUp}>Sign Up</button>
                     {isModalVisibleSignUp && modalSignUp}
                     <span className={styles.text}>Already have an account ?</span>
                     <button onClick={() => showModalSignIn()} className={styles.buttonSignIn}>Sign In</button>
                     {isModalVisibleSignIn && modalSignIn}
+                    </div>
                 </div>
 
             </div>
