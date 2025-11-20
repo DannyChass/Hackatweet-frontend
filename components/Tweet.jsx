@@ -14,7 +14,7 @@ function Tweet({ tweet, onDelete }) {
     };
 
     const toggleLike = () => {
-        setLike(!liked);
+        setLiked(!liked);
     };
 
     return (
