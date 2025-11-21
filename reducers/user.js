@@ -10,7 +10,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     userData: (state, action) => {
-      state.value = { username: action.payload.username, token: action.payload.token };
+      state.value = { username: action.payload.username, token: action.payload.token, firstname : action.payload.firstname };
     },
   },
 });

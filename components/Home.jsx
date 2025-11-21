@@ -3,13 +3,14 @@ import styles from '../styles/Home.module.css'
 import Tweet from '../components/Tweet'
 import Trends from '../components/Trends'
 import TrendPage from '../components/TrendPage';
+import { useRouter } from 'next/router'
 
 import { useSelector } from 'react-redux';
 
 function Home() {
 
     const hashtag = /([#])\w+/g
-
+    const router = useRouter();
     const [newTweet, setNewTweet] = useState('');
 
     const [allTweet, setAllTweet] = useState([]);
@@ -19,6 +20,8 @@ function Home() {
     const countLetter = `${newTweet.length}/280`
 
     const token = useSelector((state) => state.user.value.token);
+    const username = useSelector((state) => state.user.value.username);
+    const firstname = useSelector((state) => state.user.value.firstname);
 
     const addTweet = () => {
         const trends = newTweet.match(hashtag)
@@ -68,13 +71,23 @@ function Home() {
         return <Tweet key={i} id={tweet.id} content={tweet.content} author={{ username: tweet.author, firstname: tweet.firstname }} createdAt={tweet.date} onDelete={deleteTweet} />
     })
 
-
+    const logout = () => {
+        router.push('/')
+    }
 
     return (
         <>
             <div className={styles.container}>
                 <div className={styles.blockLeft}>
                     <img src="./logo.png" height={100} width={100} />
+                    <div className={styles.boxLogout}>
+                        <div className={styles.boxProfil}>
+                            <img src="./profil.jpg" height={40} width={40} />
+                            {firstname}
+                            <span>@{username}</span>
+                        </div>
+                        <button onClick={() => logout()} className={styles.buttonLogout}>Logout</button>
+                    </div>
 
                 </div>
                 <div className={styles.blockCenter}>
