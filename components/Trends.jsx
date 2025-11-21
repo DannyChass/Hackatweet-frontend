@@ -16,7 +16,7 @@ function Trends(props) {
         }
 
         loadTrends();
-    }, []);
+    }, [props.refreshTrends]);
 
     return (
         <div className={styles.container}>

@@ -19,6 +19,7 @@ function Home() {
     const [allTweet, setAllTweet] = useState([]);
 
     const [selectedTrend, setSelectedTrend] = useState(null);
+    const [refreshTrends, setRefreshTrends] = useState(false);
 
     const countLetter = `${newTweet.length}/280`
 
@@ -30,7 +31,7 @@ function Home() {
         let trendsBrut = newTweet.match(hashtag)
         let trends = []
         for (let trend of trendsBrut)
-        trends.push(trend.slice(1))
+            trends.push(trend.slice(1))
         console.log(trends)
         fetch('http://localhost:3000/tweets/new', {
             method: 'POST',
@@ -41,6 +42,7 @@ function Home() {
             .then(data => {
                 setNewTweet('')
                 setAllTweet([data.tweet, ...allTweet])
+                setRefreshTrends(!refreshTrends);
             })
 
 
@@ -126,7 +128,7 @@ function Home() {
                     )}
                 </div>
                 <div className={styles.blockRight}>
-                    <Trends onSelectTrend={openTrendPage} />
+                    <Trends onSelectTrend={openTrendPage} refreshTrends={refreshTrends} />
                 </div>
             </div>
         </>

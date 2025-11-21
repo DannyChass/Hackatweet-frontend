@@ -8,9 +8,10 @@ export default function TrendPage({ trend }) {
 
     useEffect(() => {
         const loadTweets = async () => {
-            const clean = trend.replace("#", "");
-            const res = await fetch(`http://localhost:3000/trends/tweets/${clean}`);
+            console.log(`http://localhost:3000/trends/tweets/${trend}`);
+            const res = await fetch(`http://localhost:3000/trends/tweets/${trend}`);
             const data = await res.json();
+            console.log(data);
             if (data.result) setTweets(data.tweets);
         };
         loadTweets();
