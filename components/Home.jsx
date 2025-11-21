@@ -27,7 +27,11 @@ function Home() {
     const firstname = useSelector((state) => state.user.value.firstname);
 
     const addTweet = () => {
-        const trends = newTweet.match(hashtag)
+        let trendsBrut = newTweet.match(hashtag)
+        let trends = []
+        for (let trend of trendsBrut)
+        trends.push(trend.slice(1))
+        console.log(trends)
         fetch('http://localhost:3000/tweets/new', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
