@@ -75,7 +75,7 @@ function Home() {
                 <div className={styles.blockCenter}>
                     <div className={styles.newTweet}>
                         <h1 className={styles.title1}>Home</h1>
-                        <input onChange={(e) => setNewTweet(e.target.value)} value={newTweet} className={styles.input} type='text' maxlength="280" placeholder='tweet' />
+                        <input onChange={(e) => setNewTweet(e.target.value)} value={newTweet} className={styles.input} type='text' maxlength="280" placeholder="What's up" />
                         <div className={styles.countButton}>
                             <span className={styles.countLetter}>{countLetter}</span>
                             <button onClick={() => addTweet()} className={styles.buttonTweet}>Tweet</button>
