@@ -1,4 +1,4 @@
-import { useEffect, useSate } from "react";
+import { useEffect, useState } from "react";
 import Trend from './Trend';
 import styles from '../styles/Trends.module.css';
 

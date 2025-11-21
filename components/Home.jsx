@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import Tweet from '../components/Tweet'
+import Trends from '../components/Trends'
 
 import { useSelector } from 'react-redux';
 
@@ -11,6 +12,7 @@ function Home() {
     const [newTweet, setNewTweet] = useState('');
 
     const [allTweet, setAllTweet] = useState([]);
+   
 
     const token = useSelector((state) => state.user.value.token);
 
@@ -81,8 +83,7 @@ function Home() {
 
                 </div>
                 <div className={styles.blockRight}>
-                    <h1 className={styles.title2}>Trends</h1>
-
+                    <Trends />
                 </div>
             </div>
         </>
