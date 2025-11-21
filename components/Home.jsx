@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 
 function Home() {
 
+    const hashtag = /([#])\w+/g
 
     const [newTweet, setNewTweet] = useState('');
 
@@ -14,16 +15,16 @@ function Home() {
     const token = useSelector((state) => state.user.value.token);
 
     const addTweet = () => {
+        const trends = newTweet.match(hashtag)
         fetch('http://localhost:3000/tweets/new', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ token: token, content: newTweet, trends: [] }),
+            body: JSON.stringify({ token: token, content: newTweet, trends: trends }),
         })
             .then(response => response.json())
             .then(data => {
-                console.log(allTweet)
-
-                setAllTweet([data.tweet, ...allTweet] )
+                console.log(data)
+               setAllTweet([data.tweet, ...allTweet] )
             })
         
             
@@ -34,7 +35,6 @@ function Home() {
             .then(response => response.json())
             .then(data => {
                 setAllTweet(data.tweets);
-                console.log(data)
             });
     }, []);
 
@@ -46,14 +46,18 @@ function Home() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
-            })
-    }
+                
+                const filteredTweet = allTweet.filter((e) =>{
+                    return e.id !== data.deletedTweetId
+                } )
+                setAllTweet(filteredTweet);
+            });
+    };
 
 
 
     const allTheTweet = allTweet.map((tweet, i) => {
-        return <Tweet key={i} content={tweet.content} author={{ username: tweet.author, firstname: tweet.firstname }} createdAt={tweet.date} />
+        return <Tweet key={i} id={tweet.id} content={tweet.content} author={{ username: tweet.author, firstname: tweet.firstname }} createdAt={tweet.date} onDelete={deleteTweet}/>
     })
 
 

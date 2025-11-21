@@ -31,9 +31,8 @@ function Tweet( props ) {
                 <button className={styles.like} onClick={toggleLike}>
                     {liked ? "❤️" : "🤍"}
                 </button>
-                {console.log(user.username)}
                 {user && user.username === props.author.username && (
-                    <button className={styles.delete} onClick={() => props.onDelete(props._id)}>
+                    <button className={styles.delete} onClick={() => props.onDelete(props.id)}>
                         🗑️
                     </button>
                 )}
