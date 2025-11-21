@@ -12,7 +12,8 @@ function Home() {
     const [newTweet, setNewTweet] = useState('');
 
     const [allTweet, setAllTweet] = useState([]);
-
+   
+    const countLetter = `${newTweet.length}/280`
 
     const token = useSelector((state) => state.user.value.token);
 
@@ -26,10 +27,10 @@ function Home() {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                setAllTweet([data.tweet, ...allTweet])
+               setAllTweet([data.tweet, ...allTweet] )
             })
-
-
+        
+            
     };
 
     useEffect(() => {
@@ -48,10 +49,10 @@ function Home() {
         })
             .then(response => response.json())
             .then(data => {
-
-                const filteredTweet = allTweet.filter((e) => {
+                
+                const filteredTweet = allTweet.filter((e) =>{
                     return e.id !== data.deletedTweetId
-                })
+                } )
                 setAllTweet(filteredTweet);
             });
     };
@@ -59,7 +60,7 @@ function Home() {
 
 
     const allTheTweet = allTweet.map((tweet, i) => {
-        return <Tweet key={i} id={tweet.id} content={tweet.content} author={{ username: tweet.author, firstname: tweet.firstname }} createdAt={tweet.date} onDelete={deleteTweet} />
+        return <Tweet key={i} id={tweet.id} content={tweet.content} author={{ username: tweet.author, firstname: tweet.firstname }} createdAt={tweet.date} onDelete={deleteTweet}/>
     })
 
 
@@ -74,8 +75,11 @@ function Home() {
                 <div className={styles.blockCenter}>
                     <div className={styles.newTweet}>
                         <h1 className={styles.title1}>Home</h1>
-                        <input onChange={(e) => setNewTweet(e.target.value)} value={newTweet} className={styles.input} type='text' placeholder="What's up?" />
-                        <button onClick={() => addTweet()} className={styles.buttonTweet}>Tweet</button>
+                        <input onChange={(e) => setNewTweet(e.target.value)} value={newTweet} className={styles.input} type='text' maxlength="280" placeholder='tweet' />
+                        <div className={styles.countButton}>
+                            <span className={styles.countLetter}>{countLetter}</span>
+                            <button onClick={() => addTweet()} className={styles.buttonTweet}>Tweet</button>
+                        </div>
                     </div>
                     <div className={styles.allTweet}>
                         {allTheTweet}

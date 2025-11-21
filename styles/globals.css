@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: Mont;
+    src: url("/fonts/Mont-Heavy.otf") format("opentype");
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

@@ -6,23 +6,23 @@
 
 .blockLeft {
     width: 25%;
+    border-right: 1px solid #2f3336;
 }
 
 .blockCenter {
-    width: 45%;
-    border-left: 1px solid #2f3336;
-    border-right: 1px solid #2f3336;
+    padding-top: 1%;
+    width: 45%;    
     display: flex;
     flex-direction: column;
 }
 
 .blockRight {
     width: 30%;
+    border-left: 1px solid #2f3336;
 }
 
 .newTweet {
     height: 30%;
-    border: 1px solid #2f3336;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,6 +34,7 @@
     width: 90%;
     color: white;
     border-bottom: 1px solid #2f3336;
+    line-break: auto;
 }
 
 .buttonTweet {
@@ -43,7 +44,7 @@
     width: 180px;
     height: 40px;
     border-radius: 20px;
-    margin-left: 70%;
+    margin-left: 5%;
 }
 
 .allTweet {
@@ -60,4 +61,16 @@
 .title2 {
     color: white;
     font-size: 30px;
+}
+
+.countButton {
+    width: 50%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-left: 35%;
+}
+
+.countLetter {
+    color: white;
 }

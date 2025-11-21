@@ -24,8 +24,16 @@ function Login() {
         setIsModalVisibleSignUp(true);
     }
 
+    const unShowModalSignUp = () => {
+        setIsModalVisibleSignUp(false);
+    }
+
     const showModalSignIn = () => {
         setIsModalVisibleSignIn(true);
+    }
+    
+    const unShowModalSignIn = () => {
+        setIsModalVisibleSignIn(false);
     }
 
     const hideModal = () => {
@@ -64,20 +72,25 @@ function Login() {
     const modalSignUp = (
         <>
             <div className={styles.modal} >
+                <button onClick={() => unShowModalSignUp()} className={styles.buttonX}>X</button>
+                <img src="./logo.png" height={100} width={100} />
+                <span>Create your hackatweet account</span>
                 <input onChange={(e) => setFirstname(e.target.value)} value={firstname} className={styles.input} type='text' placeholder='firstname' />
                 <input onChange={(e) => setUsernameSignUp(e.target.value)} value={usernameSignUp} className={styles.input} type='text' placeholder='username' />
-                <input onChange={(e) => setPasswordSignUp(e.target.value)} value={passwordSignUp} className={styles.input} type='text' placeholder='password' />
-                <button onClick={() => addUser()} className={styles.buttonSignUp}>Sign Up</button>
+                <input onChange={(e) => setPasswordSignUp(e.target.value)} value={passwordSignUp} className={styles.input} type='password' placeholder='password' />
+                <button onClick={() => addUser()} className={styles.buttonSignUp2}>Sign Up</button>
             </div>
         </>
     );
 
     const modalSignIn = (
         <>
-            <div className={styles.modal} >
+            <div className={styles.modal2} >
+                <button onClick={() => unShowModalSignIn()} className={styles.buttonX}>X</button>
+                <img src="./logo.png" height={100} width={100} />
                 <input onChange={(e) => setUsernameSignIn(e.target.value)} value={usernameSignIn} className={styles.input} type='text' placeholder='username' />
-                <input onChange={(e) => setPasswordSignIn(e.target.value)} value={passwordSignIn} className={styles.input} type='text' placeholder='password' />
-               <button onClick={() => logUser()} className={styles.buttonSignUp}>Sign In</button>
+                <input onChange={(e) => setPasswordSignIn(e.target.value)} value={passwordSignIn} className={styles.input} type='password' placeholder='password' />
+               <button onClick={() => logUser()} className={styles.buttonSignIn2}>Sign In</button>
             </div>
         </>
     );

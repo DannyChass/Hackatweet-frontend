@@ -1,6 +1,9 @@
+
 .container {
     display: flex;
     height: 100vh;
+    font-weight: 900;
+    
 }
 
 .backgroundLeft {
@@ -43,6 +46,17 @@
     border-radius: 20px;
 }
 
+.buttonSignUp2 {
+    cursor: pointer;
+    background-color: white;
+    color: #15202B;
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 3%;
+    font-size: 15px;
+}
+
 .buttonSignIn {
     cursor: pointer;
     background-color: #15202B;
@@ -53,20 +67,67 @@
     border: 1px solid white;
 }
 
-.modal {
-    height: 30%;
-    width: 30%;
+.buttonSignIn2 {
+     cursor: pointer;
     background-color: white;
+    color: #15202B;
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 3%;
+}
+
+.modal {
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    height: 40%;
+    width: 21%;
+    border-radius: 15px;
+    background-color: rgb(24, 24, 24);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;  
+    overflow: auto;
+    padding-bottom: 25px;
+    font-size: 20px;
+}
+
+.modal2 {
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    height: 40%;
+    width: 21%;
+    border-radius: 15px;
+    background-color: rgb(24, 24, 24);
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     border-radius: 10px;
+    overflow: auto;
+    padding-bottom: 60px;
+}
+
+.buttonX {
+    cursor: pointer;
+    font-size: 15px;
+    margin-left: 70%;
+    margin-top: 5%;
 }
 
 .input {
-    color: black;
-    border: 1px solid black;
+    padding-left: 10px;
+    color: white;
+    border: 1px solid white;
+    height: 35px;
+    border: 1px solid gray;
+    font-size: 15px;
 }
 
 .buttonContainer {
