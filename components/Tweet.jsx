@@ -20,6 +20,7 @@ function Tweet( props ) {
     return (
         <div className={styles.tweetContainer}>
             <div className={styles.header}>
+                <img src="./profil.jpg" height={40} width={40} />
                 <span className={styles.name}>{props.author.firstname}</span>
                 <span className={styles.username}>@{props.author.username}</span>
                 <span className={styles.time}>{timeSince(props.createdAt)}</span>

@@ -49,6 +49,7 @@ function Login() {
         .then (response => response.json())
         .then (data => {
             dispatch(userData(data.user))
+            router.push('/home')
         })
 
     }
