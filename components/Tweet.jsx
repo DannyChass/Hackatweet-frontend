@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
 import styles from '../styles/Tweet.module.css';
 
-function Tweet({ tweet, onDelete }) {
+function Tweet( props ) {
 
     const user = useSelector((state) => state.user.value);
     const [liked, setLiked] = useState(false);
@@ -20,20 +20,20 @@ function Tweet({ tweet, onDelete }) {
     return (
         <div className={styles.tweetContainer}>
             <div className={styles.header}>
-                <span className={styles.name}>{tweet.author.firstname}</span>
-                <span className={styles.username}>@{tweet.author.username}</span>
-                <span className={styles.time}>{timeSince(tweet.createdAt)}</span>
+                <span className={styles.name}>{props.author.firstname}</span>
+                <span className={styles.username}>@{props.author.username}</span>
+                <span className={styles.time}>{timeSince(props.createdAt)}</span>
             </div>
 
-            <div className={styles.content}>{tweet.content}</div>
+            <div className={styles.content}>{props.content}</div>
 
             <div className={styles.actions}>
                 <button className={styles.like} onClick={toggleLike}>
                     {liked ? "❤️" : "🤍"}
                 </button>
-
-                {user && user.username === tweet.author.username && (
-                    <button className={styles.delete} onClick={() => onDelete(tweet._id)}>
+                {console.log(user.username)}
+                {user && user.username === props.author.username && (
+                    <button className={styles.delete} onClick={() => props.onDelete(props._id)}>
                         🗑️
                     </button>
                 )}
