@@ -53,7 +53,7 @@ function Home() {
 
 
     const allTheTweet = allTweet.map((tweet, i) => {
-        return <Tweet key={i} content={tweet.content} author={{ username: tweet.username, firstname: tweet.firstname }} createdAt={tweet.date} />
+        return <Tweet key={i} content={tweet.content} author={{ username: tweet.author, firstname: tweet.firstname }} createdAt={tweet.date} />
     })
 
 
