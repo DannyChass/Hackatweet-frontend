@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Trend from './Trend';
 import styles from '../styles/Trends.module.css';
 
-function Trends() {
+function Trends(props) {
     const [trends, setTrends] = useState([]);
 
     useEffect(() => {
@@ -23,7 +23,12 @@ function Trends() {
             <h1 className={styles.title}>Trends</h1>
 
             {trends.map((t, i) => (
-                <Trend key={i} name={t.name} count={t.tweetCount} />
+                <Trend
+                    key={i}
+                    name={t.name}
+                    count={t.tweetCount}
+                    onClick={() => props.onSelectTrend(t.name)}
+                />
             ))}
         </div>
     )

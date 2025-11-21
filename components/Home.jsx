@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import Tweet from '../components/Tweet'
 import Trends from '../components/Trends'
+import TrendPage from '../components/TrendPage';
 
 import { useSelector } from 'react-redux';
 
@@ -12,7 +13,9 @@ function Home() {
     const [newTweet, setNewTweet] = useState('');
 
     const [allTweet, setAllTweet] = useState([]);
-   
+
+    const [selectedTrend, setSelectedTrend] = useState(null);
+
     const countLetter = `${newTweet.length}/280`
 
     const token = useSelector((state) => state.user.value.token);
@@ -27,10 +30,10 @@ function Home() {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-               setAllTweet([data.tweet, ...allTweet] )
+                setAllTweet([data.tweet, ...allTweet])
             })
-        
-            
+
+
     };
 
     useEffect(() => {
@@ -49,18 +52,20 @@ function Home() {
         })
             .then(response => response.json())
             .then(data => {
-                
-                const filteredTweet = allTweet.filter((e) =>{
+
+                const filteredTweet = allTweet.filter((e) => {
                     return e.id !== data.deletedTweetId
-                } )
+                })
                 setAllTweet(filteredTweet);
             });
     };
 
-
+    const openTrendPage = (trendName) => {
+        setSelectedTrend(trendName);  // "#hackatweet"
+    };
 
     const allTheTweet = allTweet.map((tweet, i) => {
-        return <Tweet key={i} id={tweet.id} content={tweet.content} author={{ username: tweet.author, firstname: tweet.firstname }} createdAt={tweet.date} onDelete={deleteTweet}/>
+        return <Tweet key={i} id={tweet.id} content={tweet.content} author={{ username: tweet.author, firstname: tweet.firstname }} createdAt={tweet.date} onDelete={deleteTweet} />
     })
 
 
@@ -73,21 +78,34 @@ function Home() {
 
                 </div>
                 <div className={styles.blockCenter}>
-                    <div className={styles.newTweet}>
-                        <h1 className={styles.title1}>Home</h1>
-                        <input onChange={(e) => setNewTweet(e.target.value)} value={newTweet} className={styles.input} type='text' maxlength="280" placeholder="What's up" />
-                        <div className={styles.countButton}>
-                            <span className={styles.countLetter}>{countLetter}</span>
-                            <button onClick={() => addTweet()} className={styles.buttonTweet}>Tweet</button>
-                        </div>
-                    </div>
-                    <div className={styles.allTweet}>
-                        {allTheTweet}
-                    </div>
+                    {selectedTrend ? (
+                        <TrendPage trend={selectedTrend} />
+                    ) : (
+                        <>
+                            <div className={styles.newTweet}>
+                                <h1 className={styles.title1}>Home</h1>
+                                <input
+                                    onChange={(e) => setNewTweet(e.target.value)}
+                                    value={newTweet}
+                                    className={styles.input}
+                                    type='text'
+                                    maxlength="280"
+                                    placeholder="What's up"
+                                />
+                                <div className={styles.countButton}>
+                                    <span className={styles.countLetter}>{countLetter}</span>
+                                    <button onClick={() => addTweet()} className={styles.buttonTweet}>Tweet</button>
+                                </div>
+                            </div>
 
+                            <div className={styles.allTweet}>
+                                {allTheTweet}
+                            </div>
+                        </>
+                    )}
                 </div>
                 <div className={styles.blockRight}>
-                    <Trends />
+                    <Trends onSelectTrend={openTrendPage} />
                 </div>
             </div>
         </>
