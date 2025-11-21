@@ -6,9 +6,12 @@ import TrendPage from '../components/TrendPage';
 import { useRouter } from 'next/router'
 
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { Logout } from '../reducers/user';
 
 function Home() {
 
+    const dispatch = useDispatch()
     const hashtag = /([#])\w+/g
     const router = useRouter();
     const [newTweet, setNewTweet] = useState('');
@@ -72,6 +75,7 @@ function Home() {
     })
 
     const logout = () => {
+        dispatch(Logout())
         router.push('/')
     }
 
