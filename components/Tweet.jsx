@@ -6,6 +6,7 @@ function Tweet( props ) {
 
     const user = useSelector((state) => state.user.value);
     const [liked, setLiked] = useState(false);
+    const [countlike, setCountLike] = useState(0);
 
     const timeSince = (date) => {
         const now = new Date();
@@ -15,8 +16,9 @@ function Tweet( props ) {
 
     const toggleLike = () => {
         setLiked(!liked);
+        setCountLike(countlike+1)
     };
-
+    console.log(props.like)
     return (
         <div className={styles.tweetContainer}>
             <div className={styles.header}>
@@ -32,6 +34,7 @@ function Tweet( props ) {
                 <button className={styles.like} onClick={toggleLike}>
                     {liked ? "❤️" : "🤍"}
                 </button>
+                <span>{countlike}</span>
                 {user && user.username === props.author.username && (
                     <button className={styles.delete} onClick={() => props.onDelete(props.id)}>
                         🗑️

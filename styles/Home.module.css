@@ -2,6 +2,7 @@
     height: 100vh;
     background-color: #15202B;
     display: flex;
+    font-family: Mont;
 }
 
 .blockLeft {
@@ -90,7 +91,7 @@
 
 .boxProfil {
     font-size: 20px;
-    width: 40%;
+    width: 50%;
     display: flex;
     justify-content: space-around;
     padding-left: 5%;

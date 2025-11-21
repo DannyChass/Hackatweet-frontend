@@ -32,7 +32,7 @@ function Home() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                setNewTweet('')
                 setAllTweet([data.tweet, ...allTweet])
             })
 
@@ -66,9 +66,9 @@ function Home() {
     const openTrendPage = (trendName) => {
         setSelectedTrend(trendName);  // "#hackatweet"
     };
-
+    console.log(allTweet)
     const allTheTweet = allTweet.map((tweet, i) => {
-        return <Tweet key={i} id={tweet.id} content={tweet.content} author={{ username: tweet.author, firstname: tweet.firstname }} createdAt={tweet.date} onDelete={deleteTweet} />
+        return <Tweet key={i} id={tweet.id} content={tweet.content} author={{ username: tweet.author, firstname: tweet.firstname }} like={tweet.likes} createdAt={tweet.date} onDelete={deleteTweet} />
     })
 
     const logout = () => {
