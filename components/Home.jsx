@@ -84,7 +84,7 @@ function Home() {
                         <>
                             <div className={styles.newTweet}>
                                 <h1 className={styles.title1}>Home</h1>
-                                <input
+                                <textarea
                                     onChange={(e) => setNewTweet(e.target.value)}
                                     value={newTweet}
                                     className={styles.input}

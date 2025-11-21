@@ -34,7 +34,7 @@
     width: 90%;
     color: white;
     border-bottom: 1px solid #2f3336;
-    line-break: auto;
+    white-space: inherit ;
 }
 
 .buttonTweet {
