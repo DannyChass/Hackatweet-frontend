@@ -18,6 +18,7 @@ export default function TrendPage({ trend }) {
 
     return (
         <>
+            <div className={styles.newTweet}>
             <h1 className={styles.title1}>{trend}</h1>
 
             <input
@@ -25,7 +26,7 @@ export default function TrendPage({ trend }) {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
             />
-
+            </div>
             <div className={styles.allTweet}>
                 {tweets.map((t, i) => (
                     <Tweet
