@@ -5,7 +5,6 @@ function Trend(props) {
         <div className={styles.trend}>
             <span className={styles.name}>{props.name}</span>
             <span className={styles.count}>{props.count} Tweets</span>
-
         </div>
     )
 }
